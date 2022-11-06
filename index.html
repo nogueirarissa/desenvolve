@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="" />
+    <meta name="description" content="150 words" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="author" content="G9">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+
+    <script src="https://kit.fontawesome.com/7db78e5ecc.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="shortcut icon" href="./src/img/3.PNG" type="image/x-icon">
+    <title>Santander</title>
+</head>
+
+<body>
+    <style>
+        body {
+            width: 100%;
+            font-family: "Open Sans", sans-serif;
+            margin: 0;
+            background-color: #c00;
+        }
+
+        div.back {
+            background-color: #ffffff;
+        }
+
+        nav.header-nav {
+            border: 2px solid transparent;
+            width: 100%;
+            height: 5rem;
+            bottom: 0;
+            left: 0;
+            display: inline;
+            background-color: #ffffff;
+            border: 0;
+        }
+
+        nav.header-nav li {
+            display: inline;
+        }
+
+        nav.header-nav img {
+            margin-left: 1rem;
+            display: inline-block;
+            vertical-align: middle;
+            margin-top: 1rem;
+            background-color: #ffffff;
+        }
+
+        .nav-menu {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 1rem;
+        }
+
+        .nav-menu li a {
+            margin-left: 2rem;
+            font-size: 14px;
+            text-decoration: none;
+            color: #000000;
+        }
+
+        .nav-menu li a b {
+            color: #ff0000;
+        }
+
+        .nav-menu li a:hover {
+            border-bottom: 1px solid #000000;
+        }
+
+        .nav-menu input[type='search'] {
+            margin-left: 2rem;
+            width: 20rem;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            outline: 0;
+            box-shadow: 0 0 0 0;
+        }
+
+        .nav-menu input#cpf {
+            height: 2.1rem;
+            border: none;
+            box-shadow: 0 0 0 0;
+            outline: 0;
+        }
+
+        .nav-menu select {
+            margin-left: 2rem;
+            height: 2.1rem;
+            border-radius: 4px;
+            border: 1px solid #000000;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            outline: 0;
+            box-shadow: 0 0 0 0;
+            font-weight: 700;
+        }
+
+        div.div-pass-header {
+            margin-left: 2rem;
+            display: inline-block;
+            vertical-align: middle;
+            width: 12rem;
+            border-radius: 4px;
+            border: 1px solid #000000;
+        }
+
+        .mobile-nav,
+        .close-item {
+            display: none;
+        }
+
+        .nav {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            background-color: #c00;
+        }
+
+        .nav .fa {
+            margin-left: 5px;
+        }
+
+        .nav-item {
+            position: relative;
+            background-color: #c00;
+        }
+
+        .nav-link,
+        .dp-link {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 14px 18px;
+            transition: 0.25s;
+            margin-top: 2px;
+            margin-left: 2rem;
+            font-size: 16px;
+        }
+
+        .dp-link {
+            width: 10rem;
+            text-align: left;
+        }
+
+        .nav-item:hover,
+        .nav-item .active {
+            background-color: #c00;
+        }
+
+        .dp-menu {
+            list-style: none;
+            padding: 0;
+            border-left: 3px solid transparent;
+            z-index: 2;
+            width: 10rem;
+        }
+
+        .dp-item {
+            position: relative;
+        }
+
+        .dp-item:hover,
+        .dp-item:hover>.dp-link {
+            background-color: #c00;
+            background-color: #ffffff;
+            color: #c00;
+            border-radius: 4px;
+        }
+
+        .level-1 {
+            display: none;
+            background-color: #c00;
+            width: 150px;
+        }
+
+        .level-2 {
+            display: none;
+            width: 200px;
+            top: 0px;
+            left: 100%;
+            font-size: 0.9rem;
+            background-color: #c00;
+        }
+
+        .nav-item:hover>.level-1 {
+            display: block;
+        }
+
+        .dp-item:hover>.level-2 {
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .mobile-nav {
+                display: block;
+                text-align: right;
+                padding: 10px 15px;
+                background-color: #333;
+            }
+
+            .mobile-btn {
+                color: #eee;
+                background-color: #666;
+                box-shadow: 0 0 6px rgba(0, 0, 0, 1);
+                border: none;
+                padding: 8px 18px;
+                border-radius: 5px;
+                font-size: 18px;
+                transition: 0.25s;
+            }
+
+            .mobile-btn:hover {
+                cursor: pointer;
+                background-color: #555;
+            }
+
+            .nav {
+                display: block;
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                overflow: auto;
+                top: 0;
+                transition: 0.25s;
+            }
+
+            #main-nav {
+                left: -100%;
+            }
+
+            li.close-item {
+                display: block;
+                padding: 20px 18px;
+                text-align: right;
+            }
+
+            .dp-menu {
+                width: 100%;
+                position: static;
+                border: none;
+            }
+
+            .level-1>.dp-item>.dp-link {
+                padding-left: 28px;
+                background-color: #444;
+            }
+
+            .level-2>.dp-item>.dp-link {
+                padding-left: 38px;
+                background-color: #555;
+            }
+
+            .dp-menu a:hover {
+                color: #ccc;
+            }
+
+            .fa-caret-right {
+                transform: rotate(90deg);
+            }
+        }
+
+        #description {
+            padding: 30px 20px;
+        }
+
+        #description h3 {
+            margin: 16px 0;
+        }
+
+        #description p {
+            padding-bottom: 16px;
+            border-bottom: 1px solid #ccc;
+            line-height: 1.4rem;
+        }
+
+        /*Modal*/
+        .title {
+            margin-bottom: 5%;
+        }
+
+        .modalBtn {
+            background-color: transparent;
+            border: none;
+        }
+
+        .text {
+            margin-top: 0;
+            font-size: 1.1em;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            color: #ffffff;
+        }
+
+        .modal .content {
+            border: 3px solid #ffffff;
+            background-color: rgb(47, 45, 45);
+            margin: 7% auto;
+            padding: 20px;
+            border-radius: 5px;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--title);
+            height: 20rem;
+        }
+
+        .content p button.btn-desenvolve {
+            background-color: transparent;
+            width: 9rem;
+            font-size: 19px;
+            border: 2px solid transparent;
+            outline: 0;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 0 0 0;
+            color: transparent;
+            text-transform: uppercase;
+            color: #eedada;
+        }
+
+        .text-fial {
+            margin-top: 2rem;
+        }
+
+        .content p button.btn-desenvolve:hover {
+            color: #ffffff
+        }
+    </style>
+
+    <div class="modal">
+        <div class="content">
+            <h1 class="title">Voce ja conhece o Desenvolve + <i class="fa-sharp fa-solid fa-graduation-cap"></i></h1>
+            <p class="text">Você ja pensou em fazer aquele curso e quando se deu conta não tinha o dinheiro.</p>
+            <div>
+                <i class="fa-sharp fa-solid fa-chalkboard-user fa-8x"></i>
+            </div>
+            <p class="text-fial">Não deixe de fazer<button class="btn-desenvolve" id="course"> clique aqui</button> e
+                confira.</p>
+        </div>
+    </div>
+
+    <nav class="header-nav">
+        <div class="div-nav back">
+            <img src="./src/img/1.PNG" alt="img-bank">
+            <div class="nav-menu">
+                <li><a href=""><b>Para Você</b></a></li>
+                <li><a href="">Para sua Empresa</a></li>
+                <input placeholder="O que você procura?" type="search" name="" id=""><i
+                    class="fa-solid fa-magnifying-glass"></i>
+                <div class="div-pass-header">
+                    <input placeholder="Insira seu CPF" type="text" name="" id="cpf"><i class="fa-solid fa-lock"></i>
+                </div>
+                <select name="" id="">
+                    <option value="#" selected>Acessar</option>
+                    <option value="">Pessoa física</option>
+                    <option value="">Pessoa jurídica</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <div class="bg-dark">
+        <div class="container">
+            <div class="mobile-nav">
+                <button class="mobile-btn" onclick="toggleMenu(1)">Menu</button>
+            </div>
+            <ul class="nav" id="main-nav">
+                <li class="close-item">
+                    <button class="mobile-btn" onclick="toggleMenu(0)">Close &times;</button>
+                </li>
+                <li class="nav-item">
+                    <a href="#!" class="nav-link">Meu dia a dia</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#!" class="nav-link">
+                        Produtos e Serviços <i class="fa-solid fa-shop"></i>
+                    </a>
+                    <ul class="dp-menu level-1">
+                        <li class="dp-item">
+                            <a href="./src/html/desenvolve.html" class="dp-link">
+                                <b>Desenvolve +</b> <i class="fa-sharp fa-solid fa-graduation-cap"></i>
+                            </a>
+                        </li>
+                        <li class="dp-item">
+                            <a href="#!" class="dp-link">Conta corrente</a>
+                        </li>
+                        <li class="dp-item">
+                            <a href="#!" class="dp-link">Cartões de crédito</a>
+                        </li>
+                        <li class="dp-item">
+                            <a href="#!" class="dp-link">Créditos e Financiamentos</a>
+                        </li>
+                        <li class="dp-item">
+                            <a href="#!" class="dp-link">Investimentos e previdência</a>
+                        </li>
+                        <li class="dp-item">
+                            <a href="#!" class="dp-link">Renegociação</a>
+                        </li>
+                        <li class="dp-item">
+                            <a href="#!" class="dp-link">DinDin Do Milhão</a>
+                        </li>
+                        <li class="dp-item">
+                            <a href="#!" class="dp-link">Consórcio</a>
+                        </li>
+                        <li class="dp-item">
+                            <a href="#!" class="dp-link">Seguros</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#!" class="nav-link">Open Finance</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#!" class="nav-link">Atendimento</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#!" class="nav-link">Agências</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#!" class="nav-link">Blog</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
+
+    <div class="div-clip card">
+        <img id="img2" src="./src/img/2.PNG" alt="img-bank">
+    </div>
+
+    <button class="modalBtn"></button>
+
+    <script>
+
+        var btnModal = document.getElementById('course');
+        btnModal.addEventListener('click', e => {
+            window.location.href = "./src/html/desenvolve.html";
+        });
+
+        $(document).ready(function () {
+            $('.modalBtn').trigger('click');
+        });
+
+        //modal
+        const switchModal = () => {
+            const modal = document.querySelector('.modal')
+            const actualStyle = modal.style.display
+            if (actualStyle == 'block') {
+                modal.style.display = 'none'
+            }
+            else {
+                modal.style.display = 'block'
+            }
+        }
+
+        const btn = document.querySelector('.modalBtn')
+        btn.addEventListener('click', switchModal)
+
+        window.onclick = function (event) {
+            const modal = document.querySelector('.modal')
+            if (event.target == modal) {
+                switchModal()
+            }
+        }
+
+        function toggleMenu(id) {
+            console.log(id);
+            let nav = document.getElementById("main-nav");
+            if (id === 1) {
+                nav.style.left = "0%";
+            } else {
+                nav.style.left = "-100%";
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

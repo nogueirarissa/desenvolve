@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="" />
+    <meta name="description" content="150 words" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="author" content="G9">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+
+    <script src="https://kit.fontawesome.com/7db78e5ecc.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <link rel="shortcut icon" href="/src/img/3.PNG" type="image/x-icon">
+    <title>Desenvolve - Santander</title>
+</head>
+
+<body>
+    <style>
+        body {
+            width: 100%;
+            font-family: "Open Sans", sans-serif;
+            margin: 0;
+        }
+
+        div.back {
+            background-color: #ffffff;
+        }
+
+        nav.header-nav {
+            border: 2px solid #000000;
+            width: 100%;
+            height: 5rem;
+            bottom: 0;
+            left: 0;
+            display: inline;
+            background-color: #ffffff;
+            border: 0;
+        }
+
+        nav.header-nav li {
+            display: inline;
+        }
+
+        nav.header-nav img.img-snt {
+            margin-left: 1rem;
+            display: inline-block;
+            vertical-align: middle;
+            margin-top: 1rem;
+            border: 2px solid #b0afaf;
+            border-bottom: 1px;
+            border-top: 1px;
+            border-left: 1px;
+            opacity: 0.9;
+        }
+
+        nav.header-nav .div-t {
+            border: 2px solid transparent;
+            font-size: 21px;
+            display: inline-block;
+            vertical-align: middle;
+            height: 2rem;
+            opacity: 0.4;
+            margin-top: 0.5rem;
+            line-height: 2rem;
+        }
+
+        nav.header-nav b#t {
+            margin-top: 1px;
+        }
+
+        div.col1-pag,
+        div.pag,
+        div.simulator,
+        div.-msbutton {
+            margin-top: 3rem;
+            margin-left: 8rem;
+        }
+
+        div.col1-pag header h1 {
+            opacity: 0.7;
+            font-weight: 1;
+            font-size: 3rem;
+        }
+
+        div.col1-pag header h2 {
+            opacity: 0.5;
+            font-weight: 1;
+            font-size: 1.5rem;
+        }
+
+        div.calc {
+            margin-top: 3rem;
+        }
+
+        div.calc button {
+            width: 14rem;
+            height: 3rem;
+            font-size: 16px;
+            font-weight: 1;
+            letter-spacing: 1px;
+            cursor: pointer;
+            background-color: #c00;
+            border: 2px solid #c00;
+            color: #ffffff;
+            border-radius: 5px;
+            text-transform: uppercase;
+        }
+
+        div.calc button:active {
+            background-color: #f1d5d5;
+            border: 2px solid #c00;
+            color: #c00;
+            font-weight: bold;
+        }
+
+        #escondido,
+        #modal-curso-fina,
+        #modal-certificado-fina {
+            display: none;
+            margin-top: 2rem;
+            border: 2px solid transparent;
+            height: 30rem;
+            width: 38rem;
+            text-align: center;
+        }
+
+        div#escondido b#curso-imp {
+            color: #c00;
+        }
+
+        div#escondido h4 {
+            font-size: 19px;
+        }
+
+        div.-ms,
+        div.div-parc {
+            display: inline-block;
+            vertical-align: middle;
+            justify-content: space-around;
+            width: 12rem;
+        }
+
+        div.cal-pag-finan {
+            margin: auto;
+            width: 100%;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+
+        div.div-men {
+            margin-top: 2rem;
+            font-weight: 1;
+        }
+
+        span#i,
+        b#curso-parc,
+        b#curso-valor {
+            color: #c00;
+        }
+
+        select {
+            width: 24.5rem;
+            height: 2.5rem;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 15px;
+            text-transform: uppercase;
+        }
+
+        option {
+            font-weight: bold;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        select,
+        input#curso {
+            border: 1px solid #000000;
+        }
+
+        input#curso:focus::-webkit-input-placeholder {
+            color: transparent;
+        }
+
+        input#curso {
+            width: 24rem;
+            height: 2.5rem;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+
+        div.imp-vl {
+            border: 1px solid #c00;
+            width: 10rem;
+            height: 2rem;
+            line-height: 2.1rem;
+            margin-left: 1rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 0.6rem;
+            vertical-align: middle;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        input[type=range] {
+            -webkit-appearance: none;
+            margin: 10px 0;
+            width: 20rem;
+        }
+
+        input[type=range]:focus {
+            outline: none;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 12.8px;
+            cursor: pointer;
+            animate: 0.2s;
+            box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+            background: #c00;
+            border-radius: 25px;
+            border: 0px solid #000101;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+            border: 0px solid #000000;
+            height: 20px;
+            width: 39px;
+            border-radius: 7px;
+            background: #65001c;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -3.6px;
+        }
+
+        input[type=range]:focus::-webkit-slider-runnable-track {
+            background: #f1d5d5;
+            border: 2px solid #c00;
+        }
+
+        input[type=range]::-moz-range-track {
+            width: 100%;
+            height: 12.8px;
+            cursor: pointer;
+            animate: 0.2s;
+            box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+            border-radius: 25px;
+            border: 0px solid #000101;
+        }
+
+        input[type=range]::-moz-range-thumb {
+            box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+            border: 0px solid #000000;
+            height: 20px;
+            width: 39px;
+            border-radius: 7px;
+            background: #65001c;
+            cursor: pointer;
+        }
+
+        input[type=range]::-ms-track {
+            width: 100%;
+            height: 12.8px;
+            cursor: pointer;
+            animate: 0.2s;
+            background: transparent;
+            border-color: transparent;
+            border-width: 39px 0;
+            color: transparent;
+        }
+
+        input[type=range]::-ms-fill-lower {
+            border: 0px solid #000101;
+            border-radius: 50px;
+            box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+        }
+
+        input[type=range]::-ms-fill-upper {
+            border: 0px solid #000101;
+            border-radius: 50px;
+            box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+        }
+
+        input[type=range]::-ms-thumb {
+            box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+            border: 0px solid #000000;
+            height: 20px;
+            width: 39px;
+            border-radius: 7px;
+            background: #65001c;
+            cursor: pointer;
+        }
+
+        button#curso-btn {
+            width: 10rem;
+            height: 3rem;
+            font-size: 16px;
+            font-weight: 1;
+            letter-spacing: 1px;
+            cursor: pointer;
+            background-color: #c00;
+            border: 2px solid #c00;
+            color: #ffffff;
+            border-radius: 5px;
+            text-transform: uppercase;
+        }
+
+        button.btn-reload {
+            width: 5rem;
+            height: 2rem;
+            font-size: 16px;
+            font-weight: 1;
+            letter-spacing: 1px;
+            cursor: pointer;
+            background-color: #c00;
+            border: 2px solid #c00;
+            color: #ffffff;
+            border-radius: 5px;
+            text-transform: uppercase;
+        }
+
+        button.btn-reload:active {
+            background-color: #f1d5d5;
+            border: 2px solid #c00;
+            color: #c00;
+            font-weight: bold;
+        }
+    </style>
+
+<nav class="header-nav">
+        <div class="div-nav back">
+            <img class="img-snt" src="/src/img/1.PNG" style="cursor: pointer;" onclick="window.location.href='/index.html'" alt="img-bank">
+            <div class="div-t">
+                <b id="t">Desenvolve</b>
+            </div>
+        </div>
+    </nav>
+    <div class="col1-pag">
+        <header id="title-pag">
+            <h1>Desenvolve + <i class="fa-solid fa-graduation-cap"></i></h1>
+            <h2>Conte com a gente para dar uma força aos seus estudos! Faça um financiamento do seu curso.</h2>
+        </header>
+    </div>
+
+    <div class="title-2 pag">
+        <h3>Faça agora uma simulação e conheça as vantagens.</h3>
+    </div>
+
+    <div class="pag-button-info -user-finan -msbutton">
+        <button id="curso-btn" onclick="MudarestadoCurso('modal-curso-fina')">Curso <i class="fa-solid fa-chalkboard"></i></button>
+    </div>
+
+    <div class="col-pag simulator" id="modal-curso-fina">
+        <div class="slc-one">
+            <p><i class="fa-solid fa-cube"></i> Qual o nome da plataforma?</p>
+            <select name="" id="slc-curso-finan">
+                <option value="#" selected>Escolha a plataforma</option>
+                <option value="Herospark">Herospark</option>
+                <option value="EADplataforma">EADplataforma</option>
+                <option value="Moodle">Moodle</option>
+                <option value="Eduzz">Eduzz</option>
+                <option value="Udemy">Udemy</option>
+                <option value="Apollo">Apollo</option>
+                <option value="EADbox">EADbox</option>
+                <option value="Hotmart">Hotmart</option>
+                <option value="Alura">Alura</option>
+            </select>
+            <p><i class="fa-solid fa-pencil"></i> Nome do curso.</p>
+            <input placeholder="Digite o nome do curso" type="text" name="" id="curso" required />
+            <p><i class="fa-solid fa-percent"></i> Nº de parcelas</p>
+            <select name="" id="parcela">
+                <option value="#" selected>parcela</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+            </select>
+            <p><i class="fa-solid fa-calculator"></i> Qual valor total que você gostaria de financiar?
+            </p>
+            <input type="range" value="500" min="500" max="10000" step="100" id="range">
+            <div class="imp-vl">
+                <span id="impressao"></span>
+            </div>
+        </div>
+
+        <div class="div-btn calc">
+            <button type="submit" id="Clique" onclick="fac(), getCurrentDate(), calc(), scrool()">Simular <i class="fa-solid fa-file-export"></i></button>
+
+        </div>
+
+        <div id="escondido">
+            <h4>Confira como ficou sua simulação: *</h4>
+            <div class="div-info- cal-pag-finan">
+                <div class="div-parc">
+                    <b>Valor da parcela</b><br>
+                    <b id="curso-valor"></b>
+                </div>
+                <div class="div-parc">
+                    <b>Prazo</b><br>
+                    <b id="curso-parc"></b>
+                </div>
+                <div class="div-parc -ms">
+                    <b id="text-b ms">E ai, coube no bolso?<br>
+                        <span id="i">Vá até a sua agencia para contratar</span></b>
+                </div>
+            </div>
+            <div class="div-men">
+                <div>
+                    <b>Data da simulação: </b> <span class="output"></span>
+                </div>
+                <p><b>* Foi considerada a taxa mínima de 1,82¹% ao mês para o curso de </b><b id="curso-imp"></b><b>e
+                        2,22¹% ao mês para demais
+                        cursos elegíveis.</b></p>
+
+                <p><b>* Essa simulação é referente ao 1º contrato de financiamento graduação. Para renovar seu
+                        contrato,
+                        procure seu gerente. Sujeito a análise de crédito.</b></p>
+
+                <p><b>* Trata-se de uma simulação e os valores poderão sofrer alterações no momento da
+                        contratação.</b>
+                </p>
+            </div>
+            <button class="btn-reload" onclick="window.location.reload()"><i
+                    class="fa-solid fa-rotate-right"></i></button>
+        </div><br><br><br><br>
+    </div><br><br><br><br>
+
+    <script>
+
+        function scrool() {
+            $('#Clique').click(function () {
+                var alvo = $('#curso-imp');
+                $('body, html').animate({ scrollTop: alvo.offset().top }, 600);
+                return false;
+            })
+        }
+
+        function getCurrentDate() {
+
+            let dateObj = new Date();
+            let month = String(dateObj.getMonth() + 1).padStart(2, '0');
+            let day = String(dateObj.getDate()).padStart(2, '0');
+            let year = dateObj.getFullYear();
+            let output = day + '/' + month + '/' + year;
+
+            document.querySelector('.output').textContent = output;
+        }
+
+        $("#Clique").click(function () {
+            $("#escondido").css("display", "block");
+        });
+
+        function MudarestadoCurso(el) {
+            var display = document.getElementById(el).style.display;
+            if (display == "none")
+                document.getElementById(el).style.display = 'block';
+            else
+                document.getElementById(el).style.display = 'none';
+        }
+
+
+        function fac() {
+            var inputImp = document.getElementById('curso').value;
+            document.getElementById('curso-imp').innerText = inputImp;
+
+            var slcParc = document.getElementById('parcela').value;
+            document.getElementById('curso-parc').innerText = slcParc + " meses";
+        }
+
+        var range = document.getElementById("range");
+        var impressao = document.getElementById("impressao");
+        impressao.innerHTML = range.value;
+
+        range.oninput = function () {
+            impressao.innerHTML = parseInt(this.value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        var event = new CustomEvent("input");
+        range.dispatchEvent(event);
+
+        function calc() {
+            var slcParc = parseInt(document.getElementById('parcela').value, 10);
+            var juros = 1.80;
+            var total = range.value / slcParc;
+            document.getElementById('curso-valor').innerText = total * juros;
+            $("#curso-valor").text(parseInt($("#curso-valor").text()).toLocaleString('pt-br', {
+                style: 'currency',
+                currency: 'BRL',
+
+            }));
+        }
+
+        function atualizaRelogio() {
+            var momentoAtual = new Date();
+
+            var vhora = momentoAtual.getHours();
+            var vminuto = momentoAtual.getMinutes();
+            var vsegundo = momentoAtual.getSeconds();
+
+            var vdia = momentoAtual.getDate();
+            var vmes = momentoAtual.getMonth() + 1;
+            var vano = momentoAtual.getFullYear();
+
+            if (vdia < 10) { vdia = "0" + vdia; }
+            if (vmes < 10) { vmes = "0" + vmes; }
+            if (vhora < 10) { vhora = "0" + vhora; }
+            if (vminuto < 10) { vminuto = "0" + vminuto; }
+            if (vsegundo < 10) { vsegundo = "0" + vsegundo; }
+
+            dataFormat = vdia + " / " + vmes + " / " + vano;
+            horaFormat = vhora + " : " + vminuto + " : " + vsegundo;
+
+            document.getElementById("data").innerHTML = dataFormat;
+            document.getElementById("hora").innerHTML = horaFormat;
+
+            setTimeout("atualizaRelogio()", 1000);
+        }
+
+    </script>
+
+</body>
+
+</html>
